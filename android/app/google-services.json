@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843001585178",
+    "firebase_url": "https://chatter-eec5a.firebaseio.com",
+    "project_id": "chatter-eec5a",
+    "storage_bucket": "chatter-eec5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843001585178:android:a124773ce4d49b51bd3ba3",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843001585178-t560ni33cfj4cr2v8not3d640dr5o1ne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatapp",
+            "certificate_hash": "e7b55b778a7affd8eac1faceca33e47fb56fb71f"
+          }
+        },
+        {
+          "client_id": "843001585178-vr9j39lh9l3am67egpuokemmvd3r1v3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm1w5DhqzsfygUE9zhNwJe_myUqZv08Gg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843001585178-vr9j39lh9l3am67egpuokemmvd3r1v3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
