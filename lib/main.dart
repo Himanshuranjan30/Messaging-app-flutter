@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chat Demo',
       theme: ThemeData(
-        primaryColor: themeColor,
+        primaryColor: primaryColor,
       ),
       home: LoginScreen(title: 'CHAT DEMO'),
       debugShowCheckedModeBanner: false,

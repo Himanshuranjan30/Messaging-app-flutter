@@ -255,8 +255,8 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'MAIN',
-          style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+          'ChatBoard',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: <Widget>[

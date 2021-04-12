@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -26,7 +26,7 @@ class Chat extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'CHAT',
-          style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -67,10 +67,20 @@ class ChatScreenState extends State<ChatScreen> {
   bool isLoading;
   bool isShowSticker;
   String imageUrl;
+  var collection;
 
   final TextEditingController textEditingController = TextEditingController();
   final ScrollController listScrollController = ScrollController();
   final FocusNode focusNode = FocusNode();
+  var db;
+  database() async {
+    //final User user = await _auth.currentUser;
+    db = await mongo.Db.create(
+        "mongodb+srv://himu:himu@cluster0.qkmvt.mongodb.net/news?retryWrites=true&w=majority");
+    await db.open();
+
+    print('DB Connected');
+  }
 
   _scrollListener() {
     if (listScrollController.offset >=
@@ -82,9 +92,19 @@ class ChatScreenState extends State<ChatScreen> {
     }
   }
 
+  void onsave(String article) async {
+    collection = db.collection("news");
+    await collection.insert({
+      "article": article,
+      "isfake": false,
+    });
+    print("article posted");
+  }
+
   @override
   void initState() {
     super.initState();
+    database();
     focusNode.addListener(onFocusChange);
     listScrollController.addListener(_scrollListener);
 
@@ -206,9 +226,29 @@ class ChatScreenState extends State<ChatScreen> {
           document.data()['type'] == 0
               // Text
               ? Container(
-                  child: Text(
-                    document.data()['content'],
-                    style: TextStyle(color: primaryColor),
+                  child: InkWell(
+                    onTap: () => showDialog(
+                        context: context,
+                        builder: (ctxt) => new AlertDialog(
+                              title: Text("Do you want to check this message?"),
+                              content: Row(
+                                children: [
+                                  FlatButton(
+                                      onPressed: () => onsave(document
+                                          .data()['content']
+                                          .toString()),
+                                      child: Text("Yes")),
+                                  FlatButton(
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(),
+                                      child: Text("No"))
+                                ],
+                              ),
+                            )),
+                    child: Text(
+                      document.data()['content'],
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                   width: 200.0,
@@ -321,9 +361,30 @@ class ChatScreenState extends State<ChatScreen> {
                     : Container(width: 35.0),
                 document.data()['type'] == 0
                     ? Container(
-                        child: Text(
-                          document.data()['content'],
-                          style: TextStyle(color: Colors.white),
+                        child: InkWell(
+                          onTap: () => showDialog(
+                              context: context,
+                              builder: (ctxt) => new AlertDialog(
+                                    title: Text(
+                                        "Do you want to check this message?"),
+                                    content: Row(
+                                      children: [
+                                        FlatButton(
+                                            onPressed: () => onsave(document
+                                                .data()['content']
+                                                .toString()),
+                                            child: Text("Yes")),
+                                        FlatButton(
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(),
+                                            child: Text("No"))
+                                      ],
+                                    ),
+                                  )),
+                          child: Text(
+                            document.data()['content'],
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                         padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                         width: 200.0,
