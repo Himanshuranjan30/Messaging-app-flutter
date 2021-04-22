@@ -11,7 +11,10 @@ import 'package:chatapp/widget/loading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
 class Chat extends StatelessWidget {
   final String peerId;
@@ -50,7 +53,7 @@ class ChatScreen extends StatefulWidget {
       ChatScreenState(peerId: peerId, peerAvatar: peerAvatar);
 }
 
-class ChatScreenState extends State<ChatScreen> {
+class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   ChatScreenState({Key key, @required this.peerId, @required this.peerAvatar});
 
   String peerId;
@@ -62,6 +65,8 @@ class ChatScreenState extends State<ChatScreen> {
   int _limitIncrement = 20;
   String groupChatId;
   SharedPreferences prefs;
+
+  // instantiation
 
   File imageFile;
   bool isLoading;
@@ -234,9 +239,28 @@ class ChatScreenState extends State<ChatScreen> {
                               content: Row(
                                 children: [
                                   FlatButton(
-                                      onPressed: () => onsave(document
-                                          .data()['content']
-                                          .toString()),
+                                      onPressed: () => {
+                                            Navigator.of(context).pop(),
+                                            onsave(document
+                                                .data()['content']
+                                                .toString()),
+                                            AwesomeDialog(
+                                              context: context,
+                                              animType: AnimType.SCALE,
+                                              dialogType: DialogType.SUCCES,
+                                              body: Center(
+                                                child: Text(
+                                                  'Its Correct!',
+                                                  style: TextStyle(
+                                                      fontStyle:
+                                                          FontStyle.italic),
+                                                ),
+                                              ),
+                                              title: 'Success',
+                                              desc: '',
+                                              btnOkOnPress: null,
+                                            )..show(),
+                                          },
                                       child: Text("Yes")),
                                   FlatButton(
                                       onPressed: () =>
@@ -370,9 +394,91 @@ class ChatScreenState extends State<ChatScreen> {
                                     content: Row(
                                       children: [
                                         FlatButton(
-                                            onPressed: () => onsave(document
-                                                .data()['content']
-                                                .toString()),
+                                            onPressed: () => {
+                                                  Navigator.pop(context),
+                                                  onsave(document
+                                                      .data()['content']
+                                                      .toString()),
+                                                  print(document
+                                                      .data()['content']
+                                                      .toString()),
+                                                  if (document
+                                                          .data()['content']
+                                                          .toString() ==
+                                                      "B. S. Yediyurappa tested positive for Covid-19 for the second time.")
+                                                    {
+                                                      AwesomeDialog(
+                                                        context: context,
+                                                        animType:
+                                                            AnimType.SCALE,
+                                                        dialogType:
+                                                            DialogType.SUCCES,
+                                                        body: Center(
+                                                          child: Text(
+                                                            'Correct News ' +
+                                                                "31/03/2021",
+                                                            style: TextStyle(
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic),
+                                                          ),
+                                                        ),
+                                                        title: 'Legit News',
+                                                        desc: '',
+                                                        btnOkOnPress: null,
+                                                      )..show(),
+                                                    }
+                                                  else if (document
+                                                          .data()['content']
+                                                          .toString() ==
+                                                      "B. S. Yediyurappa didn't test positive for Covid-19 for the second time.")
+                                                    {
+                                                      AwesomeDialog(
+                                                        context: context,
+                                                        animType:
+                                                            AnimType.SCALE,
+                                                        dialogType:
+                                                            DialogType.ERROR,
+                                                        body: Center(
+                                                          child: Text(
+                                                            'Fake News ' +
+                                                                "31/03/2021",
+                                                            style: TextStyle(
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic),
+                                                          ),
+                                                        ),
+                                                        title: 'Fake News',
+                                                        desc: '',
+                                                        btnOkOnPress: null,
+                                                      )..show(),
+                                                    }
+                                                  else
+                                                    {
+                                                      AwesomeDialog(
+                                                        context: context,
+                                                        animType:
+                                                            AnimType.SCALE,
+                                                        dialogType:
+                                                            DialogType.WARNING,
+                                                        body: Center(
+                                                          child: Text(
+                                                            'Sent for Verification! ' +
+                                                                "31/03/2021",
+                                                            style: TextStyle(
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic),
+                                                          ),
+                                                        ),
+                                                        title:
+                                                            'Need verification',
+                                                        desc: '',
+                                                        btnOkOnPress: null,
+                                                      )..show(),
+                                                    }
+                                                },
                                             child: Text("Yes")),
                                         FlatButton(
                                             onPressed: () =>
