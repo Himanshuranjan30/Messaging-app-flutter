@@ -464,7 +464,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                                             DialogType.WARNING,
                                                         body: Center(
                                                           child: Text(
-                                                            'Sent for Verification! ' +
+                                                            'Sent for Verification ' +
                                                                 "31/03/2021",
                                                             style: TextStyle(
                                                                 fontStyle:
