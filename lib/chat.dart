@@ -99,11 +99,16 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   void onsave(String article) async {
     collection = db.collection("news");
-    await collection.insert({
-      "article": article,
-      "isfake": false,
-    });
-    print("article posted");
+    var news = await collection
+        .findOne(mongo.where.eq('article', article).fields(['isfake']));
+    print(news);
+    if (news == null) {
+      await collection.insert({
+        "article": article,
+        "isfake": false,
+      });
+      print("article posted");
+    }
   }
 
   @override
