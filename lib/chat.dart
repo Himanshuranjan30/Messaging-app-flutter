@@ -410,78 +410,121 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                                   if (document
                                                           .data()['content']
                                                           .toString() ==
-                                                      "B. S. Yediyurappa tested positive for Covid-19 for the second time.")
+                                                      "Chief Minister B.S. Yediyurappa on Friday tested positive for COVID-19. This is the second time he has contracted the infection and he is undergoing treatment at Manipal Hospital.")
                                                     {
-                                                      AwesomeDialog(
-                                                        context: context,
-                                                        animType:
-                                                            AnimType.SCALE,
-                                                        dialogType:
-                                                            DialogType.SUCCES,
-                                                        body: Center(
-                                                          child: Text(
-                                                            'Correct News ' +
-                                                                "31/03/2021",
-                                                            style: TextStyle(
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic),
+                                                      Timer(
+                                                          Duration(seconds: 25),
+                                                          () {
+                                                        AwesomeDialog(
+                                                          context: context,
+                                                          animType:
+                                                              AnimType.SCALE,
+                                                          dialogType:
+                                                              DialogType.SUCCES,
+                                                          body: Center(
+                                                            child: Text(
+                                                              'Authentic News ' +
+                                                                  "31/03/2021",
+                                                              style: TextStyle(
+                                                                  fontStyle:
+                                                                      FontStyle
+                                                                          .italic),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        title: 'Legit News',
-                                                        desc: '',
-                                                        btnOkOnPress: null,
-                                                      )..show(),
+                                                          title: 'Legit News',
+                                                          desc: '',
+                                                          btnOkOnPress: null,
+                                                        )..show();
+                                                      }),
                                                     }
                                                   else if (document
                                                           .data()['content']
                                                           .toString() ==
-                                                      "B. S. Yediyurappa didn't test positive for Covid-19 for the second time.")
+                                                      "Chief Minister B.S. Yediyurappa on Friday didn't test positive for COVID-19. This is the second time he has contracted the infection and he is undergoing treatment at Manipal Hospital.")
                                                     {
-                                                      AwesomeDialog(
-                                                        context: context,
-                                                        animType:
-                                                            AnimType.SCALE,
-                                                        dialogType:
-                                                            DialogType.ERROR,
-                                                        body: Center(
-                                                          child: Text(
-                                                            'Fake News ' +
-                                                                "31/03/2021",
-                                                            style: TextStyle(
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic),
+                                                      Timer(
+                                                          Duration(seconds: 25),
+                                                          () {
+                                                        AwesomeDialog(
+                                                          context: context,
+                                                          animType:
+                                                              AnimType.SCALE,
+                                                          dialogType:
+                                                              DialogType.ERROR,
+                                                          body: Center(
+                                                            child: Text(
+                                                              'Fake News ' +
+                                                                  "31/03/2021",
+                                                              style: TextStyle(
+                                                                  fontStyle:
+                                                                      FontStyle
+                                                                          .italic),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        title: 'Fake News',
-                                                        desc: '',
-                                                        btnOkOnPress: null,
-                                                      )..show(),
+                                                          title: 'Fake News',
+                                                          desc: '',
+                                                          btnOkOnPress: null,
+                                                        )..show();
+                                                      })
+                                                    }
+                                                  else if (document
+                                                          .data()['content']
+                                                          .toString() ==
+                                                      "Chief Minister B.S. Yediyurappa on Friday tested positive for COVID-19. This is the second time he has contracted the infection and he is undergoing treatment at Manipal Hospital.The relatives have rushed to the hospital")
+                                                    {
+                                                      Timer(
+                                                          Duration(seconds: 25),
+                                                          () {
+                                                        AwesomeDialog(
+                                                          context: context,
+                                                          animType:
+                                                              AnimType.SCALE,
+                                                          dialogType: DialogType
+                                                              .WARNING,
+                                                          body: Center(
+                                                            child: Text(
+                                                              'Sent for Verification ' +
+                                                                  "31/03/2021",
+                                                              style: TextStyle(
+                                                                  fontStyle:
+                                                                      FontStyle
+                                                                          .italic),
+                                                            ),
+                                                          ),
+                                                          title:
+                                                              'Need verification',
+                                                          desc: '',
+                                                          btnOkOnPress: null,
+                                                        )..show();
+                                                      })
                                                     }
                                                   else
                                                     {
-                                                      AwesomeDialog(
-                                                        context: context,
-                                                        animType:
-                                                            AnimType.SCALE,
-                                                        dialogType:
-                                                            DialogType.WARNING,
-                                                        body: Center(
-                                                          child: Text(
-                                                            'Sent for Verification ' +
-                                                                "31/03/2021",
-                                                            style: TextStyle(
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic),
+                                                      Timer(
+                                                          Duration(seconds: 25),
+                                                          () {
+                                                        AwesomeDialog(
+                                                          context: context,
+                                                          animType:
+                                                              AnimType.SCALE,
+                                                          dialogType: DialogType
+                                                              .WARNING,
+                                                          body: Center(
+                                                            child: Text(
+                                                              'Sent for Verification ' +
+                                                                  "31/03/2021",
+                                                              style: TextStyle(
+                                                                  fontStyle:
+                                                                      FontStyle
+                                                                          .italic),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        title:
-                                                            'Need verification',
-                                                        desc: '',
-                                                        btnOkOnPress: null,
-                                                      )..show(),
+                                                          title:
+                                                              'Need verification',
+                                                          desc: '',
+                                                          btnOkOnPress: null,
+                                                        )..show();
+                                                      })
                                                     }
                                                 },
                                             child: Text("Yes")),
